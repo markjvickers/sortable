@@ -45,7 +45,7 @@ object ListingProtocol extends DefaultJsonProtocol {
       "title" -> JsString(l.title),
       "manufacturer" -> JsString(l.manufacturer),
       "currency" -> JsString(l.currency),
-      "price" -> JsString(l.price.get.toString))
+      "price" -> JsString(toString(l.price.get)))
 
     def read(value: JsValue) = {
       value.asJsObject.getFields("title", "manufacturer", "currency", "price") match {
@@ -55,7 +55,9 @@ object ListingProtocol extends DefaultJsonProtocol {
           throw new DeserializationException("Listing expected")
       }
     }
-
+    
+    private def toString(float: Float): String = f"$float%.2f"
+    
     private def toFloat(floatStr: String): Option[Float] = {
       try {
         return Some(floatStr.toFloat)
