@@ -4,6 +4,10 @@ Sortable Challenge met in Scala
 ENVIRONMENT
 ===========
 scalac 2.11.8
+It's fast! (<900 ms on my laptop)
+Leverages parallel processing over immutable data structures.
+
+Give execution rights to build.sh and go.sh
 
 BUILDING
 ========
